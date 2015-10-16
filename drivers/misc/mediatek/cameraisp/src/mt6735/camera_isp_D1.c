@@ -10986,12 +10986,6 @@ static MINT32 ISP_open(struct inode *pInode, struct file *pFile)
 			IspInfo.UserCount, current->comm, current->pid, current->tgid);
 	}
 
-	/* kernel log */
-#if (LOG_CONSTRAINT_ADJ == 1)
-	g_log_def_constraint = get_detect_count();
-	set_detect_count(g_log_def_constraint+100);
-#endif
-
 	/* do wait queue head init when re-enter in camera */
 	EDBufQueRemainNodeCnt = 0;
 	P2_Support_BurstQNum = 1;
@@ -11198,10 +11192,6 @@ static MINT32 ISP_release(struct inode *pInode, struct file *pFile)
 	ISP_WR32(ISP_ADDR + 0x4a00, 0x00000001);
 	LOG_DBG("ISP_MCLK1_EN Release");
 	ISP_BufWrite_Free();
-
-#if (LOG_CONSTRAINT_ADJ == 1)
-	set_detect_count(g_log_def_constraint);
-#endif
 	/*      */
 EXIT:
 

@@ -18,7 +18,6 @@
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <asm/uaccess.h>
-#include <linux/printk.h>
 
 #include "internal.h"
 #include <mt_cpufreq.h>
@@ -67,10 +66,7 @@ void log_boot(char *str)
 static void bootup_finish(void)
 {
 	initcall_debug = 0;
-#ifdef CONFIG_MT_PRINTK_UART_CONSOLE
-	mt_disable_uart();
-#endif
-	set_logtoomuch_enable(1);
+	/* printk_too_much_enable = 1; */
 #ifdef CONFIG_SYSTEM_BOOTUP_CPU_BOOST
 	mt_cpufreq_set_min_freq(MT_CPU_DVFS_LITTLE, 0);
 #endif
