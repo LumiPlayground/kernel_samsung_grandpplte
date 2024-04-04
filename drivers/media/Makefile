@@ -3,7 +3,7 @@
 #
 
 media-objs	:= media-device.o media-devnode.o media-entity.o
-
+subdir-ccflags-y := -Os
 #
 # I2C drivers should come before other drivers, otherwise they'll fail
 # when compiled as builtin drivers
@@ -31,3 +31,4 @@ obj-y += rc/
 obj-y += common/ platform/ pci/ usb/ mmc/ firewire/ parport/
 obj-$(CONFIG_VIDEO_DEV) += radio/
 
+obj-$(CONFIG_MTV) += mtv/

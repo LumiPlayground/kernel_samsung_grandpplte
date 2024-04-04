@@ -1,7 +1,7 @@
 #
 # Makefile for the kernel security code
 #
-
+subdir-ccflags-y := -Os
 obj-$(CONFIG_KEYS)			+= keys/
 subdir-$(CONFIG_SECURITY_SELINUX)	+= selinux
 subdir-$(CONFIG_SECURITY_SMACK)		+= smack
@@ -27,3 +27,10 @@ obj-$(CONFIG_CGROUP_DEVICE)		+= device_cgroup.o
 # Object integrity file lists
 subdir-$(CONFIG_INTEGRITY)		+= integrity
 obj-$(CONFIG_INTEGRITY)			+= integrity/
+# Knox SDP
+obj-$(CONFIG_SDP) += sdp/
+obj-$(CONFIG_SDP) += sdp/built-in.o
+# TIMA uevent 
+obj-$(CONFIG_TIMA)     += tima_uevent/tima_uevent.o
+#TZ ICCC
+obj-$(CONFIG_TZ_ICCC)	  += tz_iccc/

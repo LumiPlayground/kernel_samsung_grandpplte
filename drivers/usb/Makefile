@@ -3,7 +3,7 @@
 #
 
 # Object files in subdirectories
-
+subdir-ccflags-y := -Os
 obj-$(CONFIG_USB)		+= core/
 
 obj-$(CONFIG_USB_DWC3)		+= dwc3/
@@ -62,3 +62,5 @@ obj-$(CONFIG_USB_GADGET)	+= gadget/
 obj-$(CONFIG_USB_COMMON)	+= common/
 
 obj-$(CONFIG_USBIP_CORE)	+= usbip/
+
+obj-$(CONFIG_USB_NOTIFY_LAYER)	+= notify/
