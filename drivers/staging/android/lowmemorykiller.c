@@ -198,6 +198,10 @@ static unsigned long lowmem_scan(struct shrinker *s, struct shrink_control *sc)
 		return SHRINK_STOP;
 	}
 
+#ifdef CONFIG_ZRAM
+	other_file -= total_swapcache_pages();
+#endif
+
 #ifdef CONFIG_HIGHMEM
 	/*
 	* Check whether it is caused by low memory in normal zone!
