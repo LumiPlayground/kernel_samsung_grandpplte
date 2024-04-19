@@ -44,8 +44,8 @@
 #include <linux/freezer.h>
 
 #if defined(CONFIG_MTK_AEE_FEATURE) && defined(CONFIG_MT_ENG_BUILD)
-#include <mt-plat/aee.h>
-#include <disp_assert_layer.h>
+#include <linux/aee.h>
+#include <linux/disp_assert_layer.h>
 static uint32_t in_lowmem;
 #endif
 

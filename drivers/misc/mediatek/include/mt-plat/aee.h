@@ -16,7 +16,7 @@
 
 #include <linux/kernel.h>
 #include <linux/sched.h>
-#include <mt-plat/mtk_ram_console.h>
+#include "mtk_ram_console.h"
 
 #define AEE_MODULE_NAME_LENGTH 64
 #define AEE_PROCESS_NAME_LENGTH 256
