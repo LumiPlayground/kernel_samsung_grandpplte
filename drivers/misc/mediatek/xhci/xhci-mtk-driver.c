@@ -54,10 +54,6 @@
 #include <linux/usb/hcd.h>
 /*#include <mach/mt_chip.h>*/
 
-#ifdef CONFIG_USB_C_SWITCH
-#include <typec.h>
-#endif
-
 #ifdef CONFIG_MTK_FPGA
 #include <linux/mu3phy/mtk-phy.h>
 #endif
@@ -721,45 +717,10 @@ void mtk_unload_xhci_on_ipo(void)
 
 #endif
 
-#ifdef CONFIG_USB_C_SWITCH
-static void typec_otg_enable(void)
-{
-	mtk_idpin_cur_stat = IDPIN_IN_HOST;
-	int ret = 0;
-
-	ret = mtk_xhci_driver_load();
-	if (!ret) {
-		mtk_xhci_wakelock_lock();
-		switch_set_state(&mtk_otg_state, 1);
-	}
-}
-
-static void typec_otg_disable(void)
-{
-	mtk_xhci_disPortPower();
-	/* USB PLL Force settings */
-	usb20_pll_settings(true, false);
-	mtk_xhci_driver_unload();
-	switch_set_state(&mtk_otg_state, 0);
-	mtk_xhci_wakelock_unlock();
-	mtk_idpin_cur_stat = IDPIN_OUT;
-}
-static struct typec_switch_data typec_host_driver = {
-	.name = "xhci-mtk",
-	.type = HOST_TYPE,
-	.enable = typec_otg_enable,
-	.disable = typec_otg_disable,
-};
-#endif
-
 
 void mtk_xhci_wakelock_init(void)
 {
 	wake_lock_init(&mtk_xhci_wakelock, WAKE_LOCK_SUSPEND, "xhci.wakelock");
-#ifdef CONFIG_USB_C_SWITCH
-	typec_host_driver.priv_data = NULL;
-	register_typec_switch_callback(&typec_host_driver);
-#endif
 }
 
 void mtk_xhci_wakelock_lock(void)
