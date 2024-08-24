@@ -208,9 +208,9 @@ static void __iomem *g_isp_inner_base_dase;
 static void __iomem *g_imgsys_config_base_dase;
 */
 
-#if (LOG_CONSTRAINT_ADJ == 1)
-	static MUINT32 g_log_def_constraint;
-#endif
+// #if (LOG_CONSTRAINT_ADJ == 1)
+//	static MUINT32 g_log_def_constraint;
+// #endif
 
 
 #define	ISP_ADDR						(gISPSYS_Reg[ISP_BASE_ADDR])
