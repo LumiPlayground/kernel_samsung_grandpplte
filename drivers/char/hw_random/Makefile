@@ -30,3 +30,6 @@ obj-$(CONFIG_HW_RANDOM_TPM) += tpm-rng.o
 obj-$(CONFIG_HW_RANDOM_BCM2835) += bcm2835-rng.o
 obj-$(CONFIG_HW_RANDOM_MSM) += msm-rng.o
 obj-$(CONFIG_HW_RANDOM_XGENE) += xgene-rng.o
+obj-$(CONFIG_HW_RANDOM_MT67XX) += mt67xx-rng.o
+
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/include
