@@ -33,7 +33,7 @@ config ARM
 	select HAVE_ARCH_MMAP_RND_BITS if MMU
 	select HAVE_ARCH_SECCOMP_FILTER if (AEABI && !OABI_COMPAT)
 	select HAVE_ARCH_TRACEHOOK
-	select HAVE_ARM_SMCCC if CPU_V7
+	select HAVE_ARM_SMCCC
 	select HAVE_BPF_JIT
 	select HAVE_CC_STACKPROTECTOR
 	select HAVE_CONTEXT_TRACKING
@@ -2452,6 +2452,8 @@ config SAMSUNG_PRODUCT_SHIP
 source "net/Kconfig"
 
 source "drivers/Kconfig"
+
+source "drivers/firmware/Kconfig"
 
 source "fs/Kconfig"
 
